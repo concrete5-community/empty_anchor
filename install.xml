@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<concrete5-cif version="1.0">
+
+    <blocktypes>
+        <blocktype package="empty_anchor" handle="empty_anchor" />
+    </blocktypes>
+
+    <blocktypesets>
+        <blocktypeset package="empty_anchor" handle="basic" name="Basic">
+            <blocktype handle="empty_anchor" />
+        </blocktypeset>
+    </blocktypesets>
+
+</concrete5-cif>

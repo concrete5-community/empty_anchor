@@ -1,0 +1,32 @@
+{
+    "name": "concrete5-community/empty_anchor",
+    "description": "Add an empty anchor to your Concrete website",
+    "type": "concrete5-package",
+    "keywords": [
+        "concrete5",
+        "concrete",
+        "concretecms",
+        "package",
+        "addon",
+        "anchor",
+        "html",
+        "link"
+    ],
+    "homepage": "https://github.com/concrete5-community/empty_anchor",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michele Locati",
+            "email": "michele@locati.it",
+            "role": "maintainer",
+            "homepage": "https://mlocati.github.io"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/concrete5-community/empty_anchor/issues",
+        "source": "https://github.com/concrete5-community/empty_anchor"
+    },
+    "require": {
+        "concrete5/core": ">= 8.2"
+    }
+}
