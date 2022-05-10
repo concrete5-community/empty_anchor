@@ -28,11 +28,18 @@ class Controller extends BlockController
     const ID_MAX_LENGTH = 255;
 
     /**
-     * The product name.
+     * The anchor name.
      *
      * @var string|null
      */
     public $anchorName;
+
+    /**
+     * The Y offset of the anchor.
+     *
+     * @var int|string|null
+     */
+    public $offsetY;
 
     /**
      * {@inheritdoc}
@@ -46,14 +53,14 @@ class Controller extends BlockController
      *
      * @see \Concrete\Core\Block\BlockController::$btInterfaceWidth
      */
-    protected $btInterfaceWidth = 550;
+    protected $btInterfaceWidth = 500;
 
     /**
      * {@inheritdoc}
      *
      * @see \Concrete\Core\Block\BlockController::$btInterfaceHeight
      */
-    protected $btInterfaceHeight = 615;
+    protected $btInterfaceHeight = 390;
 
     /**
      * {@inheritdoc}
@@ -128,11 +135,13 @@ class Controller extends BlockController
         $this->set('idMaxLength', static::ID_MAX_LENGTH);
         $this->set('validAnchorMessage', $this->getValidAnchorMessageDescription());
         $this->set('anchorName', (string) $this->anchorName);
+        $this->set('offsetY', $this->offsetY ? (int) $this->offsetY : 0);
     }
 
     public function view()
     {
         $this->set('isPageInEditMode', $this->isPageInEditMode());
+        $this->set('offsetY', (int) $this->offsetY);
     }
     
     /**
@@ -178,6 +187,7 @@ class Controller extends BlockController
     {
         $data = (is_array($data) ? $data : []) + [
             'anchorName' => '',
+            'offsetY' => null,
         ];
         $normalized = [];
         $errors = $this->app->make('error');
@@ -188,6 +198,13 @@ class Controller extends BlockController
             $errors->add(t('The name of the anchor is not valid.') . "\n" . $this->getValidAnchorMessageDescription());
         } elseif (strlen($normalized['anchorName']) > static::ID_MAX_LENGTH) {
             $errors->add(t('The maximum length of the anchor name is %s characters.', static::ID_MAX_LENGTH));
+        }
+        if ($data['offsetY'] === '' || $data['offsetY'] === null) {
+            $normalized['offsetY'] = 0;
+        } elseif (!is_int($data['offsetY']) && !(is_string($data['offsetY']) && preg_match('/^[\-+]?\d{1,9}$/', $data['offsetY']))) {
+            $errors->add(t('The vertical offset is invalid'));
+        } else {
+            $normalized['offsetY'] = (int) $data['offsetY'];
         }
 
         return $errors->has() ? $errors : $normalized;
