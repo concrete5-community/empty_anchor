@@ -116,13 +116,6 @@ class Controller extends BlockController
         return t('Add a simple empty anchor to your webpage.');
     }
 
-    public function registerViewAssets($outputContent = '')
-    {
-        if ($this->isPageInEditMode()) {
-            $this->requireAsset('css', 'font-awesome');
-        }
-    }
-
     public function add()
     {
         $this->edit();

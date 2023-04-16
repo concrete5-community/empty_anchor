@@ -10,7 +10,7 @@ defined('C5_EXECUTE') or die('Access denied.');
 
 if ($isPageInEditMode) {
     ?>
-    <span><i class="fas fa fa-anchor"></i> <?= h($anchorName)?></span>
+    <span>&#9875; <?= h($anchorName)?></span>
     <?php
 } else {
     $htmlAnchorName = h($anchorName);
