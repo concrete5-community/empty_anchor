@@ -27,6 +27,6 @@
         "source": "https://github.com/concrete5-community/empty_anchor"
     },
     "require": {
-        "concrete5/core": ">= 8.2"
+        "concrete5/core": "^8.2 || ^9"
     }
 }
